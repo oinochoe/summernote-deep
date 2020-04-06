@@ -10,6 +10,8 @@ $(function() {
         $(_$editorSelector)
             .eq(0)
             .addClass('active');
+    } else {
+        $(_$editorSelector).removeClass('active');
     }
 
     // editor selector
@@ -33,11 +35,12 @@ function initSummernote(id, attachFilePath) {
                 ['style', ['style']],
                 ['font', ['bold', 'underline', 'clear', 'italic', 'strikethrough']],
                 ['color', ['color']],
-                ['para', ['paragraph']],
+                ['para', ['ul', 'ol', 'paragraph']],
                 ['insert', ['link', 'picture', 'youtube']],
                 ['table', ['table']],
             ],
-            // youtube container 추가
+
+            // youtube container
             buttons: {
                 youtube: function(context) {
                     var ui = $.summernote.ui;
@@ -50,7 +53,6 @@ function initSummernote(id, attachFilePath) {
                             var question = prompt('Enter video url : ');
                             div.classList.add('youtubeContainer');
                             div.setAttribute('contenteditable', false);
-                            iframe.setAttribute('frameborder', 0);
                             iframe.setAttribute('width', '100%');
                             iframe.setAttribute('allowfullscreen', true);
                             iframe.setAttribute('allow', 'autoplay; encrypted-media');
@@ -75,8 +77,8 @@ function initSummernote(id, attachFilePath) {
                 },
             },
             styleTags: ['p', 'blockquote', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
-            tabsize: 2,
-            height: 400,
+            tabsize: 4,
+            height: 600,
             followingToolbar: true,
             prettifyHtml: true,
             codeviewFilter: true,
@@ -89,6 +91,7 @@ function initSummernote(id, attachFilePath) {
                     sendFile(files[0], this);
                 },
             },
+            lang: 'ko-KR',
         },
         { focus: true },
     );
