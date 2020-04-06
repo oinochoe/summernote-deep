@@ -86,11 +86,15 @@ function initSummernote(id, attachFilePath) {
             codeviewFilterRegex: /<\/*(?:applet|b(?:ase|gsound|link)|embed|frame(?:set)?|ilayer|l(?:ayer|ink)|meta|object|s(?:cript|tyle)|t(?:itle|extarea)|xml)[^>]*?>/gi,
             codemirror: {
                 theme: 'monokai',
+                htmlMode: true,
+                lineNumbers: true,
+                mode: 'text/html',
+                lineWrapping: true,
             },
             callbacks: {
-                onImageUpload: function(files) {
-                    sendFile(files[0], this);
-                },
+                // onImageUpload: function(files) {
+                //     sendFile(files[0], this);
+                // },
             },
             lang: 'ko-KR',
         },
