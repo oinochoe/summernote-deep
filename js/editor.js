@@ -40,12 +40,32 @@ function initSummernote(id, attachFilePath) {
                 ['table', ['table']],
                 // ['misc', ['print']],
             ],
+            popover: {
+                table: [
+                    ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
+                    ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
+                    ['custom', ['widen']],
+                ],
+            },
 
             // youtube container
             buttons: {
+                widen: function() {
+                    var prevFocus;
+                    var ui = $.summernote.ui;
+                    var btnWiden = ui.button({
+                        contents: '<i class="fa fa-child"/> 100%',
+                        tooltip: '100%',
+                        click: function() {
+                            // TODO ! widen 100%로 만들어야함
+                        },
+                    });
+
+                    return btnWiden.render();
+                },
                 youtube: function(context) {
                     var ui = $.summernote.ui;
-                    var button = ui.button({
+                    var btnYoutube = ui.button({
                         contents: '<i class="note-icon-video"/>',
                         tooltip: 'video',
                         click: function() {
@@ -74,7 +94,7 @@ function initSummernote(id, attachFilePath) {
                             }
                         },
                     });
-                    return button.render();
+                    return btnYoutube.render();
                 },
             },
             styleTags: ['p', 'blockquote', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
