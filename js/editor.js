@@ -35,7 +35,7 @@ function initSummernote(id, attachFilePath) {
                 ['style', ['style']],
                 ['font', ['bold', 'underline', 'clear', 'italic', 'strikethrough']],
                 ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']], // ??? ?? ??
+                ['para', ['ul', 'ol', 'paragraph']], // ul, ol added
                 ['insert', ['link', 'picture', 'youtube']],
                 ['table', ['table']],
                 // ['misc', ['print']],
@@ -55,7 +55,7 @@ function initSummernote(id, attachFilePath) {
                             div.classList.add('youtubeContainer');
                             div.setAttribute('contenteditable', false);
                             iframe.setAttribute('width', '100%');
-                            iframe.setAttribute('allowfullscreen', true); // frameborder ?? ?? => deprecated
+                            iframe.setAttribute('allowfullscreen', true); // frameborder == depreacted
                             iframe.setAttribute('allow', 'autoplay; encrypted-media');
 
                             if (!question.match(/^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+/)) {
