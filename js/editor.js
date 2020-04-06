@@ -38,6 +38,7 @@ function initSummernote(id, attachFilePath) {
                 ['para', ['ul', 'ol', 'paragraph']], // ??? ?? ??
                 ['insert', ['link', 'picture', 'youtube']],
                 ['table', ['table']],
+                // ['misc', ['print']],
             ],
 
             // youtube container
