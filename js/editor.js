@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
     'use strict';
 
     const EDITOR = 'adminEditor';
@@ -7,15 +7,13 @@ $(function() {
 
     // which editor selector active state
     if (localStorage.getItem(EDITOR) === SUMMER) {
-        $(_$editorSelector)
-            .eq(0)
-            .addClass('active');
+        $(_$editorSelector).eq(0).addClass('active');
     } else {
         $(_$editorSelector).removeClass('active');
     }
 
     // editor selector
-    $(document).on('click', _$editorSelector, function() {
+    $(document).on('click', _$editorSelector, function () {
         if ($(this).data('editor') === SUMMER) {
             localStorage.setItem(EDITOR, SUMMER);
         }
@@ -44,31 +42,30 @@ function initSummernote(id, attachFilePath) {
                 table: [
                     ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
                     ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
-                    ['custom', ['widen']],
+                    // ['custom', ['widen']],
                 ],
             },
 
             // youtube container
             buttons: {
-                widen: function() {
-                    var prevFocus;
+                /* widen: function (context) {
                     var ui = $.summernote.ui;
                     var btnWiden = ui.button({
                         contents: '<i class="fa fa-child"/> 100%',
                         tooltip: '100%',
-                        click: function() {
-                            // TODO ! widen 100%로 만들어야함
+                        click: function () {
+                            console.log($(context));
                         },
                     });
 
                     return btnWiden.render();
-                },
-                youtube: function(context) {
+                }, */
+                youtube: function (context) {
                     var ui = $.summernote.ui;
                     var btnYoutube = ui.button({
                         contents: '<i class="note-icon-video"/>',
                         tooltip: 'video',
-                        click: function() {
+                        click: function () {
                             var div = document.createElement('div');
                             var iframe = document.createElement('iframe');
                             var question = prompt('Enter video url : ');
@@ -115,6 +112,19 @@ function initSummernote(id, attachFilePath) {
                 // onImageUpload: function(files) {
                 //     sendFile(files[0], this);
                 // },
+                onPaste: function () {
+                    setTimeout(() => {
+                        // table 리사이징
+                        $('.note-editable table').each(function () {
+                            $(this).parent().addClass('resizable');
+                        });
+
+                        // 이미지 제한 해제
+                        $('.note-editable img').each(function () {
+                            $(this).parent().attr('style', '');
+                        });
+                    }, 0);
+                },
             },
             lang: 'ko-KR',
         },

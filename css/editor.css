@@ -16,5 +16,7 @@
 .editor_selector li:active::before { bottom: -2.5px; height: 2.5px; left: 0px; }
 .editor_selector li:active::after { right: -2.5px; width: 2.5px; bottom: 0px; }
 
-/* table no resize */
-.note-editor .table{table-layout: fixed;}
+/* table resize */
+.note-editable table{table-layout: fixed;}
+.note-editable .resizable{min-width:260px; resize:horizontal; overflow:auto;}
+.note-editable .resizable table{ table-layout:auto; width:100% !important; height:100%; }
